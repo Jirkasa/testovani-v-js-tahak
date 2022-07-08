@@ -1,0 +1,45 @@
+.link-with-icons {
+    &:link, &:visited {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6rem;
+
+        width: fit-content;
+        margin: 0 auto;
+
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+
+        color: @colors[primary];
+        
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &__icon {
+        width: 1.6rem;
+        height: 1.6rem;
+
+        transition: all .2s;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: @colors[primary];
+        }
+    }
+
+    &:hover &__icon {
+        &:first-child {
+            transform: translateX(.8rem);
+        }
+        &:last-child {
+            transform: translateX(-.8rem);
+        }
+    }
+}

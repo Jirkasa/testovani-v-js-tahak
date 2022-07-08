@@ -25,6 +25,9 @@
 .u-center-text {
   text-align: center !important;
 }
+.u-highlight-text {
+  color: #2D33AD !important;
+}
 *,
 *::before,
 *::after {
@@ -80,6 +83,11 @@ body {
 }
 .paragraph--white {
   color: #fff;
+}
+.big-text {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  color: #2A2A2E;
 }
 .intro-section {
   height: 100vh;
@@ -138,6 +146,9 @@ body {
 }
 .grid__col-1-of-3 {
   grid-column: span 4;
+}
+.grid__col-1-of-2 {
+  grid-column: span 6;
 }
 .horizontal-rule {
   width: 100%;
@@ -251,4 +262,45 @@ code.hljs {
   font-family: 'Roboto Mono', monospace;
   padding: 0;
   margin: 0;
+}
+.link-with-icons:link,
+.link-with-icons:visited {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #5960FA;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.link-with-icons:hover {
+  text-decoration: underline;
+}
+.link-with-icons__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  transition: all 0.2s;
+}
+.link-with-icons__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: #5960FA;
+}
+.link-with-icons:hover .link-with-icons__icon:first-child {
+  transform: translateX(0.8rem);
+}
+.link-with-icons:hover .link-with-icons__icon:last-child {
+  transform: translateX(-0.8rem);
+}
+.link:link,
+.link:visited {
+  color: #5960FA;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
 }

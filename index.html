@@ -170,7 +170,7 @@
                         <p class="paragraph">V této fázi vyhodnotíme výsledek testu. Porovnáme výslednou hodnotu s očekávanou hodnotou.</p>
                     </div>
                 </div>
-                <pre class="code-box"><code>it("should sum all numbers in array and return result", () => {
+                <pre class="code-box"><code>it("should summarize all numbers in an array", () => {
     // arrange
     const numbers = [1, 2, 3];
     const expectedResult = 6;
@@ -181,6 +181,206 @@
     // assert
     expect(result).toBe(expectedResult);
 });</code></pre>
+            </div>
+        </section>
+        <section class="section section--alt">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Spouštění testů</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Ke spuštění testů můžeme použít příkaz 'vitest', který si můžeme nastavit jako test script v našem package.json souboru. Po jeho spuštění Vitest automaticky prohledá v našem projektu soubory s koncovkou .test.js nebo .spec.js a spustí je.</p>
+                </div>
+                <p class="big-text u-center-text"><span class="u-highlight-text">vitest</span> | <span class="u-highlight-text">vitest watch</span> - spouští testy ve watch módu</p>
+                <p class="big-text u-center-text u-mb-6"><span class="u-highlight-text">vitest run</span> - spouští testy jen jednou</p>
+                <a href="https://vitest.dev/guide/cli.html#options" target="_blank" class="link-with-icons">
+                    <div class="link-with-icons__icon">
+                        <svg>
+                            <use xlink:href="./assets/img/icon-sprite.svg#icon-arrow-right2"></use>
+                        </svg>
+                    </div>
+                    <span>zobrazit možnosti</span>
+                    <div class="link-with-icons__icon">
+                        <svg>
+                            <use xlink:href="./assets/img/icon-sprite.svg#icon-arrow-left2"></use>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Vytvoření testu</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">Vitest obsahuje funkce it a test, které nám umožňují vytvářet testy. Obě dělají stejnou věc. Jako první parametr berou popis testu a jako druhý funkci s testovacím kódem. V této funkci otestujeme nějaký kód a výsledek porovnáme s očekávaným výsledkem pomocí funkce expect.</p>
+                </div>
+                <pre class="code-box u-mb-6"><code>import {expect, it} from 'vitest';
+
+it("should summarize all number values in an array", () => {
+    const numbers = [1, 2, 3];
+    const expectedResult = 6;
+
+    // otestování kódu a získání výsledku
+    const result = add(numbers);
+
+    // porovnání výsledku s očekávaným výsledkem
+    expect(result).toBe(expectedResult);
+});</code></pre>
+                <div class="intro-text u-center-text">
+                    <p class="paragraph">Za funkci expect, do které předáváme hodnotu kterou chceme kontrolovat, můžeme řetězit spoustu metod, pomocí kterých můžeme předanou hodnotu zkontrolovat. Všechny můžete najít v <a href="https://vitest.dev/api/#expect" target="_blank" class="link">dokumentaci</a>.</p>
+                </div>
+            </div>
+        </section>
+        <section class="section section--alt">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">toBe vs. toEqual</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Za funkci expect můžeme řetězit dvě podobné metody jménem toBe a toEqual. Rozdíl mezi nimi je ten, že toBe porovnává hodnoty přesně. Pokud chceme porovnávat dva objekty u kterých chceme zjistit jestli mají stejnou strukturu, tak je metoda toBe vyhodnotí jako rozdílné, protože jsou uloženy na jiném místě v paměti. Proto existuje metoda toEqual, která zjišťuje jestli se dvě hodnoty rovnají nebo mají stejnou strukturu.</p>
+                </div>
+                <div class="grid">
+                    <div class="grid__col-1-of-2">
+                        <pre class="code-box"><code>import {expect, it} from 'vitest';
+
+it("should be equal", () => {
+    const obj1 = {
+        someValue: true,
+        someOtherValue: 2
+    };
+
+    const obj2 = {
+        someValue: true,
+        someOtherValue: 2
+    };
+
+    // tento test selže (proměnná obj1 odkazuje na jiný objekt v paměti než obj2)
+    expect(obj1).toBe(obj2);
+});</code></pre>
+                    </div>
+                    <div class="grid__col-1-of-2">
+                        <pre class="code-box"><code>import {expect, it} from 'vitest';
+
+it("should be equal", () => {
+    const obj1 = {
+        someValue: true,
+        someOtherValue: 2
+    };
+
+    const obj2 = {
+        someValue: true,
+        someOtherValue: 2
+    };
+
+    // tento test projde (obj1 má stejnou strukturu jako obj2)
+    expect(obj1).toEqual(obj2);
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Seskupování testů</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">Vitest nám nabízí funkci describe, pomocí které můžeme v souboru seskupovat testy dohromady. To se může hodit, když například testujeme soubor obsahující různé funkce.</p>
+                </div>
+                <pre class="code-box"><code>import {describe, expect, it} from 'vitest';
+
+// seskupení testů pro funkci add
+describe("add()", () => {
+    it("should do something...", () => {
+        // ... nějaký test ...
+    });
+    it("should do something too...", () => {
+        // ... nějaký test ...
+    });
+});
+
+// seskupení testů pro funkci substract
+describe("substract()", () => {
+    it("should do something...", () => {
+        // ... nějaký test ...
+    });
+
+    // describe funkce můžeme i vnořovat
+    describe("something", () => {
+        // ... nějaké další testy ...
+    });
+});</code></pre>
+            </div>
+        </section>
+        <section class="section section--alt">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Testování chyb</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">U některých funkcí v našem kódu můžeme v určitých situacích očekávat, že vyhodí chybu. Vitest nám to umožňuje otestovat.</p>
+                </div>
+                <pre class="code-box"><code>
+it("should throw an error", () => {
+    const numbers = ["A", "B", "C"];
+
+    // nejjednodušší cesta jak otestovat jestli nějaká funkce vrací error
+    // je obalit její volání do jiné funkce a tu předat do expect funkce
+    // - jinak bychom mohli využít i try a catch
+    const resultFn = () => {
+        add(numbers);
+    }
+
+    // očekáváme že funkce vyhodí chybu
+    expect(resultFn).toThrow();
+});</code></pre>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Testování asynchronního kódu</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">Při spouštění testů Vitest nečeká na to až se provedou callbacky a asynchronní kód. Proto může testovací funkce přijímat jako parametr funkci, kterou v testovací funkci zavoláme až budeme s testováním hotovi. Pokud ale testujeme kód, který používá promisy, tak je to o něco jednodušší.</p>
+                </div>
+                <div class="grid">
+                    <div class="grid__col-1-of-2">
+                        <h3 class="heading-tertiary u-center-text u-mb-4">Callbacky</h3>
+                        <pre class="code-box"><code>import {expect, it} from 'vitest';
+
+// testovací funkce jako parametr přijímá funkci, kterou zavoláme až budeme s testováním hotovi
+it("should generate a token value", (done) => {
+    const testUserEmail = 'test@test.com';
+
+    generateToken(testUserEmail, (err, token) => {
+        // metoda toBeDefined (a podobné metody) může vrátit error, ale tady se nacházíme v
+        // callbacku, ne v it funkci, proto musíme její volání obalit do try catch bloku
+        try {
+            expect(token).toBeDefined();
+            // pokud metoda toBeDefined nevyhodila žádný error, tak můžeme done funkci zavolat bez parametrů
+            done();
+        } catch(err) {
+            // jako parametr předáváme do done funkce error, který metoda toBeDefined vyhodila
+            done(err);
+        }
+    });
+});</code></pre>
+                    </div>
+                    <div class="grid__col-1-of-2">
+                        <h3 class="heading-tertiary u-center-text u-mb-4">Promisy</h3>
+                        <pre class="code-box"><code>import {expect, it} from 'vitest';
+
+it("should generate a token value", () => {
+    const testUserEmail = 'test@test.com';
+
+    // pokud testovaná funkce vrací promise, tak jej můžeme předat do expect funkce
+    // - když předáváme do expect funkce promise, tak za ni můžeme řetězit resolves (pokud očekáváme že se promise splní)
+    // nebo rejects (pokud očekáváme že se promise nesplní) a nakonec podmínku pro hodnotu s kterou se promise splní/nesplní
+    // - funkce expect, která přijímá jako parametr promise, se musí v testovací funkci vrátit pomocí return
+    return expect(generateToken(testUserEmail)).resolves.toBeDefined();
+});
+
+// pokud chceme používat async await, tak můžeme, testování je díky tomu ještě jednodušší
+it("should generate a token value - v2", async () => { // testovací funkce je definována jako async (automaticky vrací promise)
+    const testUserEmail = 'test@test.com';
+
+    const token = await generateToken(testUserEmail);
+
+    expect(token).toBeDefined();
+});</code></pre>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
