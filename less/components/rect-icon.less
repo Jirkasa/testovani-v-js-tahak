@@ -1,0 +1,25 @@
+.rect-icon {
+    width: 5.6rem;
+    height: 5.6rem;
+
+    margin: 0 auto;
+
+    border: .4rem solid @colors[primary];
+
+    position: relative;
+    
+    svg {
+        #center-pos-abs();
+
+        width: 3.2rem;
+        height: 3.2rem;
+
+        fill: @colors[primary];
+    }
+
+    &--red {
+        border-color: @colors[accent-red];
+
+        svg { fill: @colors[accent-red]; }
+    }
+}

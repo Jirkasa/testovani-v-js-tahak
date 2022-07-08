@@ -1,0 +1,24 @@
+{
+  "name": "testovani-v-js-tahak",
+  "version": "1.0.0",
+  "description": "Tahák pro testování v JavaScriptu.",
+  "main": "index.js",
+  "scripts": {
+    "compile:less": "lessc ./less/main.less ./assets/css/style.css",
+    "nodemon:compile:less": "nodemon -e less -x \"npm run compile:less\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jirkasa/testovani-v-js-tahak.git"
+  },
+  "author": "Jiří Satora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jirkasa/testovani-v-js-tahak/issues"
+  },
+  "homepage": "https://github.com/Jirkasa/testovani-v-js-tahak#readme",
+  "devDependencies": {
+    "less": "^4.1.3",
+    "nodemon": "^2.0.19"
+  }
+}

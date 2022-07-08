@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+    <title>Testování v JS - Tahák</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <div class="page">
+        <header class="intro-section">
+            <div class="intro-section__content">
+                <h1 class="heading-primary u-mb-6">Testování v JS</h1>
+                <hr class="horizontal-rule u-mb-6"/>
+                <div class="heading-primary-sub u-mb-6">Tahák</div>
+                <hr class="horizontal-rule u-mb-6"/>
+                <div class="intro-section__text u-mb-8">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est amet quae eum nesciunt. Voluptatum, aliquam. Molestiae eum optio perferendis minima sequi, odit ipsam dolorum quo excepturi. Doloribus vitae quo aperiam?</p>
+                </div>
+                <div class="intro-section__icon">
+                    <svg>
+                        <use xlink:href="./assets/img/icon-sprite.svg#icon-triangle"></use>
+                    </svg>
+                </div>
+            </div>
+        </header>
+        <section class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-8">Proč psát testy</h2>
+                <div class="grid">
+                    <div class="grid__col-1-of-3">
+                        <div class="rect-icon u-mb-4">
+                            <svg>
+                                <use xlink:href="./assets/img/icon-sprite.svg#icon-point-up"></use>
+                            </svg>
+                        </div>
+                        <div class="text-box">
+                            <p class="paragraph paragraph--white">Vyhneme se nekonečnému manuálnímu testování.</p>
+                        </div>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <div class="rect-icon u-mb-4">
+                            <svg>
+                                <use xlink:href="./assets/img/icon-sprite.svg#icon-file-text2"></use>
+                            </svg>
+                        </div>
+                        <div class="text-box">
+                            <p class="paragraph paragraph--white">Po každé změně se naše testy mohou automaticky spustit, a zkontrolovat, jestli se něco nerozbilo</p>
+                        </div>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <div class="rect-icon u-mb-4">
+                            <svg>
+                                <use xlink:href="./assets/img/icon-sprite.svg#icon-terminal"></use>
+                            </svg>
+                        </div>
+                        <div class="text-box">
+                            <p class="paragraph paragraph--white">Psaní testů nás nutí psát čistší kód, protože se pro něj potom lépe vytvářejí testy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section--alt">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Typy testů</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Existují různé typy testů. Je jich více, ale ty nejznámější jsou pravděpodobně Unit testy, Integration testy a End-to-end testy.</p>
+                </div>
+                <div class="grid u-center-text">
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Unit testy</h3>
+                        <p class="paragraph paragraph--dark">Testování individuálních stavebních bloků aplikace. Každý stavební blok (unit) je testován zvlášť. Stavebním blokem je většinou funkce nebo třída, která nepoužívá jiné stavební bloky. Pokud dělám unit test, tak chceme testovat specifický stavební blok, jiné ne.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Integration testy</h3>
+                        <p class="paragraph paragraph--dark">Testování kombinace stavebních bloků (unit). Testuje se jestli určité stavební bloky fungují dohromady. I když všechny stavební bloky fungují samostatně, tak se může stát, že pokud budou pracovat dohromady, tak dojde k selhání.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">E2E testy</h3>
+                        <p class="paragraph paragraph--dark">End-to-end nejsou nijak spjaty s Unit a Integration testy. Jejich úkolem je testovat kompletní funkcionalitu aplikace. Protože uživatelé používají celou aplikaci, ne jen její část.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-8">Co (ne)testovat</h2>
+                <div class="grid">
+                    <div class="grid__col-1-of-3">
+                        <div class="rect-icon u-mb-4">
+                            <svg>
+                                <use xlink:href="./assets/img/icon-sprite.svg#icon-embed2"></use>
+                            </svg>
+                        </div>
+                        <div class="text-box">
+                            <p class="paragraph paragraph--white">Vždy bychom měli testovat jen vlastní kód. Pokud používáme nějaké knihovny třetích stran, tak ty netestujeme.</p>
+                        </div>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <div class="rect-icon u-mb-4">
+                            <svg>
+                                <use xlink:href="./assets/img/icon-sprite.svg#icon-target"></use>
+                            </svg>
+                        </div>
+                        <div class="text-box">
+                            <p class="paragraph paragraph--white">Měli bychom testovat vždy jen jednu věc. Neměli bychom v jednom testu testovat několik věcí najednou.</p>
+                        </div>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <div class="rect-icon rect-icon--red u-mb-4">
+                            <svg>
+                                <use xlink:href="./assets/img/icon-sprite.svg#icon-ungroup"></use>
+                            </svg>
+                        </div>
+                        <div class="text-box text-box--red">
+                            <p class="paragraph paragraph--white">Pokud testujeme frontend aplikaci, tak bychom zároveň neměli testovat i backend. Backend můžeme testovat zvlášť.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section--alt">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Co je k testování potřeba</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Pro testování našeho kódu potřebujeme tři základní věci. Potřebujeme Test Runner, Assertion Library a samozřejmě kód aplikace, kterou chceme testovat.</p>
+                </div>
+                <div class="grid u-center-text">
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Aplikační kód</h3>
+                        <p class="paragraph paragraph--dark">K vytváření testů a jejich spouštění potřebujeme samozřejmě kód naší aplikace. Testování může být (a většinou i je) v naší aplikaci integrováno. Pokud jsme například naši aplikaci vytvořili pomocí nějakého nástroje postaveného třeba na Webpacku (např. Create React App), tak pro nás může být testování připraveno.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Test Runner</h3>
+                        <p class="paragraph paragraph--dark">Test Runner představuje nástroj pro spouštění našich testů. Automaticky detekuje testovací kód, spouští jej a zobrazuje pro něj výsledky. Populárními test runnery jsou například Jest, Vitest nebo Karma.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Assertion Library</h3>
+                        <p class="paragraph paragraph--dark">Kromě test runneru potřebujeme k testování také Assertion Library. Tento nástroj slouží k definování výsledků, které po proběhnutím testu očekáváme. Assertion Library zjišťuje jestli se naše očekávání splní nebo ne. Populární Assertion knihovny jsou například Jest, Vitest nebo Chai.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">AAA vzor</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">AAA vzor se stal v testování skoro standardem. Rozděluje tvorbu testů na tři fáze: Arrange (připrav), Act (proveď) a Assert (vyhodnoť).</p>
+                </div>
+                <div class="grid u-center-text u-mb-6">
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Arrange</h3>
+                        <p class="paragraph">V této fázi si připravíme testovací prostředí a nadefinujeme hodnoty.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Act</h3>
+                        <p class="paragraph">V této fázi provedeme testování. Spustíme nějaký kód, který chceme otestovat.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary u-mb-4">Assert</h3>
+                        <p class="paragraph">V této fázi vyhodnotíme výsledek testu. Porovnáme výslednou hodnotu s očekávanou hodnotou.</p>
+                    </div>
+                </div>
+                <pre class="code-box"><code>it("should sum all numbers in array and return result", () => {
+    // arrange
+    const numbers = [1, 2, 3];
+    const expectedResult = 6;
+
+    // act
+    const result = add(number);
+
+    // assert
+    expect(result).toBe(expectedResult);
+});</code></pre>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
