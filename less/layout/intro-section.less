@@ -1,5 +1,6 @@
 .intro-section {
     height: 100vh;
+    max-height: 105rem;
 
     background-image: linear-gradient(0deg, rgba(@colors[primary-dark], 0.3), rgba(@colors[primary-dark], 0.3)), url("../../assets/img/background-image.jpg");
     background-size: cover;
@@ -9,7 +10,16 @@
     justify-content: center;
     align-items: center;
 
+    padding: 3.2rem;
+
     clip-path: polygon(0 0, 100% 0, 100% ~"calc(100% - 3.2rem)", ~"calc(100% - 12.8rem) 100%", 12.8rem 100%, 0 ~"calc(100% - 3.2rem)");
+
+    @media (max-width: #pxToEm(1420)[]) {
+        clip-path: polygon(0 0, 100% 0, 100% ~"calc(100% - 3.2rem)", ~"calc(100% - 6.4rem) 100%", 6.4rem 100%, 0 ~"calc(100% - 3.2rem)");
+    }
+    @media (max-width: #pxToEm(1280)[]) {
+        clip-path: none;
+    }
 
     &__content {
         width: 100%;
@@ -32,6 +42,13 @@
             color: @colors[white];
 
             grid-column: 3 / span 8;
+
+            #respond-tab-port({
+                grid-column: 2 / span 10;
+            });
+            #respond-phone({
+                grid-column: span 12;
+            });
         }
     }
 

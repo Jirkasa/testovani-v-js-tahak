@@ -10,5 +10,25 @@ pre code.hljs{display:block;overflow-x:auto;padding:1.6rem}code.hljs{padding:3px
         font-family: 'Roboto Mono', monospace;
         padding: 0;
         margin: 0;
+
+        // width
+        &::-webkit-scrollbar {
+            height: 1.6rem;
+        }
+
+        // track
+        &::-webkit-scrollbar-track {
+            background: @colors[grey-60];
+        }
+
+        // handle
+        &::-webkit-scrollbar-thumb {
+            background: @colors[grey-40];
+            border: .2rem solid lighten(@colors[grey-40], 10%);
+
+            &:hover {
+                background: darken(@colors[grey-40], 5%);
+            }
+        }
     }
 }

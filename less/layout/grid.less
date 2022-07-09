@@ -3,9 +3,26 @@
 
     &__col-1-of-3 {
         grid-column: span 4;
+
+        #respond-tab-port({
+            grid-column: span 6;
+
+            &:last-child {
+                grid-column: 4 / span 6;
+            }
+        });
+        #respond-phone({
+            &, &:last-child {
+                grid-column: span 12;
+            }
+        })
     }
 
     &__col-1-of-2 {
         grid-column: span 6;
+
+        #respond-tab-port({
+            grid-column: span 12;
+        });
     }
 }
