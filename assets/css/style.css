@@ -121,6 +121,19 @@ body {
   line-height: 3.2rem;
   color: #2A2A2E;
 }
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .footer {
   padding: 1.6rem 3.2rem;
   background-color: #2A2A2E;
@@ -196,6 +209,7 @@ body {
   width: 4.304rem;
   height: 2.152rem;
   margin: 0 auto;
+  animation: scaleIn 0.6s ease-out both;
 }
 .intro-section__icon svg {
   width: 100%;
