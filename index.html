@@ -32,7 +32,7 @@
                 </div>
             </div>
         </header>
-        <section class="section">
+        <section id="proc-psat-testy" class="section">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-8">Proč psát testy</h2>
                 <div class="grid">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </section>
-        <section class="section section--alt">
+        <section id="typy-testu" class="section section--alt">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">Typy testů</h2>
                 <div class="intro-text u-mb-6">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section id="co-testovat" class="section">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-8">Co (ne)testovat</h2>
                 <div class="grid">
@@ -128,7 +128,7 @@
                 </div>
             </div>
         </section>
-        <section class="section section--alt">
+        <section id="co-je-k-testovani-potreba" class="section section--alt">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">Co je k testování potřeba</h2>
                 <div class="intro-text u-mb-6">
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section id="aaa-vzor" class="section">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">AAA vzor</h2>
                 <div class="intro-text u-mb-6">
@@ -183,7 +183,7 @@
 });</code></pre>
             </div>
         </section>
-        <section class="section section--alt">
+        <section id="spousteni-testu" class="section section--alt">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">Spouštění testů</h2>
                 <div class="intro-text u-mb-6">
@@ -206,7 +206,7 @@
                 </a>
             </div>
         </section>
-        <section class="section">
+        <section id="vytvoreni-testu" class="section">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">Vytvoření testu</h2>
                 <div class="intro-text u-mb-6">
@@ -229,7 +229,7 @@ it("should summarize all number values in an array", () => {
                 </div>
             </div>
         </section>
-        <section class="section section--alt">
+        <section id="tobe-vs-toequal" class="section section--alt">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">toBe vs. toEqual</h2>
                 <div class="intro-text u-mb-6">
@@ -275,7 +275,7 @@ it("should be equal", () => {
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section id="seskupovani-testu" class="section">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">Seskupování testů</h2>
                 <div class="intro-text u-mb-6">
@@ -306,7 +306,7 @@ describe("substract()", () => {
 });</code></pre>
             </div>
         </section>
-        <section class="section section--alt">
+        <section id="testovani-chyb" class="section section--alt">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">Testování chyb</h2>
                 <div class="intro-text u-mb-6">
@@ -328,7 +328,7 @@ it("should throw an error", () => {
 });</code></pre>
             </div>
         </section>
-        <section class="section">
+        <section id="testovani-asynchronniho-kodu" class="section">
             <div class="section__content">
                 <h2 class="heading-secondary u-center-text u-mb-6">Testování asynchronního kódu</h2>
                 <div class="intro-text u-mb-6">
@@ -375,7 +375,7 @@ it("should generate a token value", () => {
 it("should generate a token value - v2", async () => { // testovací funkce je definována jako async (automaticky vrací promise)
     const testUserEmail = 'test@test.com';
 
-    const token = await generateToken(testUserEmail);
+    const token = await generateTokenPromise(testUserEmail);
 
     expect(token).toBeDefined();
 });</code></pre>
@@ -383,6 +383,214 @@ it("should generate a token value - v2", async () => { // testovací funkce je d
                 </div>
             </div>
         </section>
+        <section id="hooks" class="section section--alt">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Hooks</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Pokud používáme nějakou hodnotu ve více testech (v každém testu ji vytváříme), tak ji můžeme deklarovat mimo testy a v testech ji jen použít. Takto to ale můžeme udělat jen pro hodnoty, které se nemění. Jinak bychom museli před každém spuštění testu hodnotu resetovat. K tomuto účelu složí hooks. Můžeme s jejich pomocí spustit nějaký kód před/po každým/všemi testem.</p>
+                </div>
+                <pre class="code-box"><code>import {beforeEach, afterEach, beforeAll, afterAll, describe} from 'vitest';
+
+beforeEach(() => {
+    // kód, který se spustí před každým testem
+});
+
+afterEach(() => {
+    // kód, který se spustí po každém testu
+});
+
+beforeAll(() => {
+    // kód, který se spustí před všemi testy
+});
+
+afterAll(() => {
+    // kód, který se spustí po provedení všech testů
+});
+
+// hooks můžeme také vnořovat do describe funkcí - budou se týkat jen testů, které describe funkce obsahuje
+describe("add()", {
+    beforeEach(() => { /* nějaký kód */ });
+});
+</code></pre>
+            </div>
+        </section>
+        <section id="spioni" class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Špióni</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">Vitest nám umožňuje vytvořit si funkci, kterou můžeme použít jako obal nebo prázdnou náhradu pro jinou funkci. Máme s její pomocí možnost například zjistit, jestli byla funkce volána když ji předáme jako parametr testované funkci.</p>
+                </div>
+                <pre class="code-box u-mb-6"><code>import {it, expect, vi} from 'vitest';
+
+it("should call passed function", () => {
+    // vytvoření špionážní funkce
+    const callback = vi.fn();
+
+    // předání špionážní funkce jako parametr testované funkci
+    generateData(callback);
+
+    // očekáváme že se funkce callback ve funkci generateData zavolala
+    expect(callback).toBeCalled();
+
+    // dále můžeme po předání špionážní funkce do expect funkce řetězit metody:
+    // toBeCalledTimes, toBeCalledWith, atd... (více v dokumentaci)
+});</code></pre>
+                <a href="https://vitest.dev/api/#vi-fn" target="_blank" class="link-with-icons">
+                    <div class="link-with-icons__icon">
+                        <svg>
+                            <use xlink:href="./assets/img/icon-sprite.svg#icon-arrow-right2"></use>
+                        </svg>
+                    </div>
+                    <span>více v dokumentaci</span>
+                    <div class="link-with-icons__icon">
+                        <svg>
+                            <use xlink:href="./assets/img/icon-sprite.svg#icon-arrow-left2"></use>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section id="mocking" class="section section--alt">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">Mocking</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Vitest nám umožňuje nahradit části API jiným kódem. Při testování například nechceme, aby funkce která něco ukládá na disk opravdu něco na disk ukládala. Chceme to jen otestovat. Proto můžeme třeba změnit funkcionalitu funkcí, které testovaná funkce používá k zápisu dat na disk.</p>
+                </div>
+                    <pre class="code-box u-mb-6"><code>import {it, expect, vi} from 'vitest';
+import {promises as fs} from 'fs';
+
+// všechny funkce v modulu fs se změní v prázdné funkce
+vi.mock(fs);
+
+it('should execute the writeFile method', () => {
+    const testData = 'Test';
+    const testFilename = 'test.txt';
+
+    // otestování funkce writeData
+    writeData(testData, testFilename);
+
+    // očekáváme že se funkce writeFile ve funkci writeData zavolá
+    expect(fs.writeFile).toBeCalled();
+});</code></pre>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Pokud chceme pro nějakou funkci v modulu nastavit jinou než prázdnou funkci, tak to můžeme udělat následující způsobem:</p>
+                </div>
+                <pre class="code-box u-mb-6"><code>vi.mock(path, () => {
+    return {
+        default: {
+            // náhrada pro funkci join v modulu path
+            join: (...args) => {
+                return args[args.length - 1];
+            }
+        }
+    }
+});</code></pre>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Pokud chceme mockovat stejný module ve více souborech, tak kód pro jeho mockování můžeme přesunout do samostatného souboru. Vitest nám umožňuje vytvořit si složku __mocks__, kde můžeme vytvářet soubory pojmenované jako názvy modulů (třeba fs.js). V těchto souborech můžeme exportovat mocknutou funkcionalitu, kterou chceme používat když v jiných souborech zavoláme vi.mock.</p>
+                </div>
+                <pre class="code-box u-mb-6"><code>// __mocks__/fs.js
+
+import { vi } from 'vitest';
+
+// mocknutí části modulu fs jménem promises
+export const promises = {
+    // náhrada pro funkci writeFile
+    writeFile: vi.fn((path, data) => {
+        return new Promise((resolve, reject) => {
+            resolve();
+        });
+    })
+}</code></pre>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph paragraph--dark">Pokud chceme mocknout nějakou globální funkci, tak nám Vitest poskytuje kromě metody mock také metodu stubGlobal, kterou k tomu můžeme využít.</p>
+                </div>
+                <pre class="code-box"><code>const testFetch = vi.fn();
+// mocknutí globální funkce jménem fetch
+vi.stubGlobal("fetch", testFetch);</code></pre>
+            </div>
+        </section>
+        <section id="dom-testovani" class="section">
+            <div class="section__content">
+                <h2 class="heading-secondary u-center-text u-mb-6">DOM testování</h2>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">Pokud chceme testovat DOM, tak nejprve musíme změnit prostředí, ve kterém se náš testovací kód spouští. Máme na výběr z těchto tří možností:</p>
+                </div>
+                <div class="grid u-center-text u-mb-6">
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary heading-tertiary--lowercase u-mb-4">node</h3>
+                        <p class="paragraph">Tato možnost je nastavena jako defaultní. V tomto prostředí jsou k dispozici NodeJS API a moduly.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary heading-tertiary--lowercase u-mb-4">jsdom</h3>
+                        <p class="paragraph">Prostředí pro testování frontend kódu. K dispozici také třeba v testovacím frameworku jménem Jest.</p>
+                    </div>
+                    <div class="grid__col-1-of-3">
+                        <h3 class="heading-tertiary heading-tertiary--lowercase u-mb-4">happy-dom</h3>
+                        <p class="paragraph">Další prostředí pro testování frontend kódu.</p>
+                    </div>
+                </div>
+                <div class="intro-text u-mb-2">
+                    <p class="paragraph">Prostředí ve kterém se naše testy spustí můžeme nastavit pomocí možnosti --environment:</p>
+                </div>
+                <p class="big-text u-center-text u-highlight-text u-mb-6">vitest --environment happy-dom</p>
+                <h3 class="heading-tertiary u-center-text u-mb-4">Načtení stránky pro testování</h3>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">Předtím než začneme s testováním, tak musíme načíst stránku, kterou chceme testovat. To můžeme udělat následujícím způsobem (používáme happy-dom):</p>
+                </div>
+                <pre class="code-box u-mb-6"><code>import fs from 'fs';
+import path from 'path';
+import { Window } from 'happy-dom';
+
+
+// získání cesty k HTML souboru
+const htmlDocPath = path.join(process.cwd(), 'index.html');
+// přečtení HTML souboru a uložení jeho obsahu do proměnné
+const htmlDocumentContent = fs.readFileSync(htmlDocPath).toString();
+
+// vytvoření nového window objektu
+const window = new Window();
+// získání documentu window objektu
+const document = window.document;
+// zapsání obsahu HTML souboru do documentu
+document.write(htmlDocumentContent);
+
+// změnění documentu na document virtuálního DOMu
+vi.stubGlobal('document', document);</code></pre>
+                <h3 class="heading-tertiary u-center-text u-mb-4">Příklad DOM testování</h3>
+                <div class="intro-text u-mb-6">
+                    <p class="paragraph">Následující ukázka ukazuje, jakým způsobem můžeme DOM testovat.</p>
+                </div>
+                <pre class="code-box u-mb-6"><code> /* ... kód z minulé ukázky a importy ... */
+
+// při DOM testování bychom měli virtual DOM před každým testem resetovat
+beforeEach(() => {
+    // smazání obsahu documentu
+    document.body.innerHTML = '';
+    // zapsání obsahu HTML souboru do documentu
+    document.write(htmlDocumentContent);
+    // stubGlobal volat nemusíme, protože document je objekt a ten se předává adresou
+});
+
+it('should add new element to the id="todo-list" element', () => {
+    // spuštění testované funkce
+    addItem("create website");
+
+    // získání elementu s ID todo-list
+    const todoList = document.getElementById("todo-list");
+    // získání prvního elementu z elementu s ID todo-list
+    const liElement = todoList.firstElementChild;
+
+    // očekáváme že se do elementu s ID todo-list přidal nový element
+    expect(liElement).not.toBeNull();
+});</code></pre>
+                <div class="intro-text">
+                    <p class="paragraph">Pro testování DOMu nám JSDOM nebo Happy-DOM nemusí stačit. Proto existují různé knihovny pro DOM testování. Jednou z nich je třeba <a href="https://testing-library.com/" class="link">Testing Library</a>, pomocí které můžeme jednoduše testovat i populární frontend frameworky jako je React.</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <p class="paragraph paragraph--white">Tento tahák vytvořil <a href="https://jirkasa.github.io/" target="_blank" class="link">Jiří Satora</a></p>
+        </footer>
     </div>
 </body>
 </html>
